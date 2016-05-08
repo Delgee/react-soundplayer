@@ -34,12 +34,14 @@ class Progress extends Component {
 
         let classNames = ClassNames('sb-soundplayer-progress-container', className);
         let innerClassNames = ClassNames('sb-soundplayer-progress-inner', innerClassName);
-        
+
         if (!innerStyle) {
             innerStyle = {};
         }
 
-        innerStyle = Object.assign(innerStyle, {width: `${value}%`});
+        let tempStyle = JSON.parse(JSON.stringify(innerStyle));
+
+        innerStyle = Object.assign(tempStyle, {width: `${value}%`});
 
         return (
             <div className={classNames} style={style} onClick={this.handleSeekTrack.bind(this)}>
